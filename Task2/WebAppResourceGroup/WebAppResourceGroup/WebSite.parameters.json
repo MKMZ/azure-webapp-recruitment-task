@@ -1,0 +1,10 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "environmentType": { "value": "dev" },
+    "resourceName": { "value": "webapp1-test1" },
+    "serviceOwner": { "value": "serviceOwner" },
+    "warsawApiUrl": { "value": "https://api.um.warszawa.pl" }
+  }
+}

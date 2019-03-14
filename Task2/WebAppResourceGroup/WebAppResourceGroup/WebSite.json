@@ -1,0 +1,80 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "environmentType": {
+      "type": "string",
+      "allowedValues": [
+        "dev",
+        "test",
+        "prod"
+      ],
+      "metadata": {
+        "description": "Value for environment variable ENVIRONMENT_TYPE (from list: dev, test, prod)"
+      }
+    },
+    "resourceName": {
+      "type": "string",
+      "metadata": {
+        "description": "Name of resource"
+      }
+    },
+    "serviceOwner": {
+      "type": "string",
+      "metadata": {
+        "description": "Value for tag `ServiceOwner`, which will be attached to resource"
+      }
+    },
+    "warsawApiUrl": {
+      "type": "string",
+      "metadata": {
+        "description": "Value for WarsawApiUrl AppSetting"
+      }
+    },
+    "webAppPlan": {
+      "type": "string",
+      "defaultValue": "F1",
+      "allowedValues": [
+        "F1",
+        "D1",
+        "B1",
+        "B2",
+        "B3",
+        "S1",
+        "S2",
+        "S3",
+        "P1",
+        "P2",
+        "P3",
+        "P4"
+      ],
+      "metadata": {
+        "description": "Selection of Azure WebApp plan (from list), default `Free`"
+      }
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2016-08-01",
+      "name": "[parameters('resourceName')]",
+      "type": "Microsoft.Web/sites",
+      "location": "[resourceGroup().location]",
+      "tags": {
+        "ServiceOwner": "[parameters('serviceOwner')]"
+      },
+      "properties": {
+        "settings": {
+          "commandToExecute": "[concat('SETX ENVIRONMENT_TYPE ', parameters('environmentType'), ' /m')]"
+        },
+        "siteConfig": {
+          "appSettings": [
+            {
+              "name": "WarsawApiUrl",
+              "value": "[parameters('warsawApiUrl')]"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}
