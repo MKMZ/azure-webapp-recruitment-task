@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
-using System.Dynamic;
-using System.Linq;
+using System.Configuration;
 using System.Threading.Tasks;
 using _19115.Domain.Entities;
 using _19115.Domain.Ports;
@@ -11,10 +10,10 @@ namespace _19115.Adapters
 {
     public class NotificationFetcherAdapter : INotificationFetcherPort
     {
-        private readonly string WarsawApiUrl = "https://api.um.warszawa.pl";
+        private readonly string WarsawApiUrl = ConfigurationManager.AppSettings["WarsawApiUrl"];
         private readonly object[] GetNotificationsPath = { "api", "action", "19115store_getNotifications" };
-        private readonly string ApiKey = "ff4f51a0-f7dd-44e7-81d6-f9af77e647b4";
-        private readonly string ResourceId = "28dc65ad-fff5-447b-99a3-95b71b4a7d1e";
+        private readonly string ApiKey = ConfigurationManager.AppSettings["ApiKey"];
+        private readonly string ResourceId = ConfigurationManager.AppSettings["WarsawResourceId"];
 
         public async Task<IList<RawNotification>> FetchRawNotificationList()
         {

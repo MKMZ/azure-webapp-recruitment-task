@@ -15,8 +15,8 @@ namespace _19115.Controllers
 
         public async Task<ActionResult> Index()
         {
-            var notifications = await _getNotificationsUseCase.Run();
-            return View(new { Notifications = notifications });
+            ViewBag.Notifications = await _getNotificationsUseCase.Run();
+            return View();
         }
     }
 }

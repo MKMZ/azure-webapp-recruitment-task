@@ -10,6 +10,6 @@
         public string AparmentNumber { get; set; }
         public string NotificationType { get; set; }
         public string Event { get; set; }
-        public string CreateDate { get; set; }
+        public long CreateDate { get; set; }
     }
 }

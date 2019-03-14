@@ -1,4 +1,6 @@
-﻿namespace _19115.Domain.Entities
+﻿using System;
+
+namespace _19115.Domain.Entities
 {
     public class Notification
     {
@@ -11,6 +13,6 @@
         public string Type { get; set; }
         public string Event { get; set; }
         public string CurrentStatus { get; set; }
-        public string CreateDate { get; set; }
+        public DateTime CreateDate { get; set; }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using _19115.Domain.Entities;
 using _19115.Domain.Ports;
@@ -17,7 +18,8 @@ namespace _19115.Adapters
                 .CreateMap<RawNotification, Notification>()
                 .ForMember(dest => dest.ApartmentNumber, opt => opt.MapFrom(src => src.AparmentNumber))
                 .ForMember(dest => dest.Type, opt => opt.MapFrom(src => src.NotificationType))
-                ).CreateMapper();
+                .ForMember(dest => dest.CreateDate, opt => opt.MapFrom(src => DateTimeOffset.FromUnixTimeMilliseconds(src.CreateDate)))
+            ).CreateMapper();
         }
 
         public Task<IList<Notification>> MapList(IList<RawNotification> rawNotificationList) =>
