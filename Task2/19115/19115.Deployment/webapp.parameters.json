@@ -3,7 +3,7 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "environmentType": { "value": "dev" },
-    "resourceName": { "value": "webapp1-test1" },
+    "resourceName": { "value": "webapp2-test1" },
     "serviceOwner": { "value": "serviceOwner" },
     "warsawApiUrl": { "value": "https://api.um.warszawa.pl" }
   }
