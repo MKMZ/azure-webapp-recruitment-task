@@ -11,9 +11,10 @@ namespace _19115.Adapters
     public class NotificationFetcherAdapter : INotificationFetcherPort
     {
         private readonly string WarsawApiUrl = ConfigurationManager.AppSettings["WarsawApiUrl"];
-        private readonly object[] GetNotificationsPath = { "api", "action", "19115store_getNotifications" };
         private readonly string ApiKey = ConfigurationManager.AppSettings["ApiKey"];
         private readonly string ResourceId = ConfigurationManager.AppSettings["WarsawResourceId"];
+
+        private readonly object[] GetNotificationsPath = { "api", "action", "19115store_getNotifications" };
 
         public async Task<IList<RawNotification>> FetchRawNotificationList()
         {

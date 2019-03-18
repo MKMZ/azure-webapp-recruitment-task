@@ -12,7 +12,6 @@ namespace _19115.Domain.Entities
         public string ApartmentNumber { get; set; }
         public string Type { get; set; }
         public string Event { get; set; }
-        public string CurrentStatus { get; set; }
         public DateTime CreateDate { get; set; }
     }
 }
